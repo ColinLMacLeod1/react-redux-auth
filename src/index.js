@@ -35,11 +35,11 @@ sagaMiddleware.run(IndexSagas)
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={App}>
+      <App>
         <Route path="/login" component={Login} />
-        <Route path="/singup" component={Signup} />
+        <Route path="/signup" component={Signup} />
         <Route path="/widgets" component={Widgets} />
-      </Route>
+      </App>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
