@@ -8,7 +8,7 @@ const App = props => (
   <div className="App">
     <div className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to Widget Reactory</h1>
+      <h1 className="App-title">Header</h1>
     </div>
     <section className="App-body">
       {props.children}
