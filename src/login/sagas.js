@@ -1,5 +1,6 @@
 import { take, fork, cancel, call, put, cancelled } from 'redux-saga/effects'
 import history from '../history'
+import { handleApiErrors } from '../lib/api-errors'
 
 import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_ERROR } from './constants'
 import { setClient, unsetClient } from '../client/actions'
@@ -23,7 +24,11 @@ function loginApi(email, password) {
 		})
 }
 
-function* logout() {}
+function* logout() {
+	yield put(unsetClient())
+	localStorage.removeItem('token')
+	history.push('/login')
+}
 
 function* loginFlow(email, password) {
 	let token

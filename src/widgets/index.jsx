@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
-class Login extends Component {}
+class Widgets extends Component {
+  render () {
+    return <div>Widgets</div>
+  }
+}
 
-export default Login
+export default Widgets
