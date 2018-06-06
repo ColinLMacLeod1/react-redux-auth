@@ -16,6 +16,11 @@ import registerServiceWorker from './registerServiceWorker'
 import IndexReducer from './index-reducer'
 import IndexSagas from './index-sagas'
 
+import {
+	checkIndexAuthorization,
+	checkWidgetAuthorization,
+} from './lib/check-auth'
+
 const sagaMiddleware = createSagaMiddleware()
 
 /*eslint-disable*/
@@ -37,11 +42,15 @@ sagaMiddleware.run(IndexSagas)
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
-			<App>
+			<App onEnter={checkIndexAuthorization(store)}>
 				<Switch>
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
-					<Route path="/widgets" component={Widgets} />
+					<Route
+						path="/widgets"
+						component={Widgets}
+						onEnter={checkWidgetAuthorization(store)}
+					/>
 				</Switch>
 			</App>
 		</Router>
